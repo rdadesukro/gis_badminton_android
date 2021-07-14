@@ -10,6 +10,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.projek_kp_gis_badminton_2021.R;
+import com.example.projek_kp_gis_badminton_2021.menu.menu_lapangan;
 
 import butterknife.ButterKnife;
 
@@ -68,7 +69,8 @@ public class menu_home extends Fragment {
         cardLapangan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent materi = new Intent(getActivity(), menu_lapangan.class);
+                startActivity(materi);
             }
         });
          cardMaps.setOnClickListener(new View.OnClickListener() {

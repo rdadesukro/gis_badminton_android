@@ -2,8 +2,10 @@ package com.example.projek_kp_gis_badminton_2021.menu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -12,10 +14,15 @@ import com.example.projek_kp_gis_badminton_2021.R;
 import com.example.projek_kp_gis_badminton_2021.adapter.ViewPagerAdapter;
 import com.example.projek_kp_gis_badminton_2021.menu.fragment.menu_home;
 import com.example.projek_kp_gis_badminton_2021.menu.fragment.menu_profil;
+import com.github.squti.guru.Guru;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class menu_utama extends AppCompatActivity {
+import org.jetbrains.annotations.NotNull;
+
+import maes.tech.intentanim.CustomIntent;
+
+public class menu_utama extends AppCompatActivity  implements BottomNavigationView.OnNavigationItemSelectedListener{
     menu_home home;
     menu_profil profil;
     ViewPager vg;
@@ -23,68 +30,19 @@ public class menu_utama extends AppCompatActivity {
     MenuItem prevMenuItem;
     BottomNavigationView bottomNavigationView;
     public static BadgeDrawable badge;
+    String status_login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_utama);
-        bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
-        vg = (ViewPager) findViewById(R.id.vg);
-        bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.home:
-                                vg.setCurrentItem(0);
-                                getSupportActionBar().setTitle("Home");
-                                break;
-                            case R.id.profil:
-                                vg.setCurrentItem(3);
-                                getSupportActionBar().setTitle("Profil");
-                                break;
-                        }
-                        return false;
-                    }
-                });
+        bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
 
-        vg.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        status_login = Guru.getString("status_loign", "false");
+        loadFragment(new menu_home());
+        getSupportActionBar().setTitle("Home");
 
-            }
 
-            @Override
-            public void onPageSelected(int position) {
-                if (prevMenuItem != null) {
-                    prevMenuItem.setChecked(false);
-                } else {
-                    bottomNavigationView.getMenu().getItem(0).setChecked(false);
-                }
-                if (position == 0) {
-                    getSupportActionBar().setTitle("Home");
-                } else if (position == 1) {
-                    getSupportActionBar().setTitle("News");
-                } else if (position == 2) {
-                    getSupportActionBar().setTitle("Notifikasi");
-                }else {
-                    getSupportActionBar().setTitle("Profil");
-                }
-                Log.d("page", "onPageSelected: " + position);
-
-                Log.i("posisi", "onPageSelected: " + position);
-                bottomNavigationView.getMenu().getItem(position).setChecked(true);
-                prevMenuItem = bottomNavigationView.getMenu().getItem(position);
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-        setupViewPager(vg);
-        vg.setCurrentItem(0);
-
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
     }
     private void setupViewPager(ViewPager viewPager) {
@@ -93,10 +51,48 @@ public class menu_utama extends AppCompatActivity {
         profil = new menu_profil();
 
 
-
         adapter.addFragment(home);
         adapter.addFragment(home);
 
         viewPager.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+        Fragment fragment = null;
+
+        switch (item.getItemId()) {
+            case R.id.home:
+                fragment = new menu_home();
+                getSupportActionBar().setTitle("Home");
+                break;
+
+
+            case R.id.profil:
+                if (status_login.equals("false")){
+                    Intent intent = new Intent(this, menu_login.class);
+                    startActivity(intent);
+                    CustomIntent.customType(this, "fadein-to-fadeout");
+
+                }else {
+                    fragment = new menu_home();
+                    getSupportActionBar().setTitle("Profil");
+                }
+                break;
+        }
+
+        return loadFragment(fragment);
+
+    }
+    private boolean loadFragment(Fragment fragment) {
+        //switching fragment
+        if (fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
     }
 }
