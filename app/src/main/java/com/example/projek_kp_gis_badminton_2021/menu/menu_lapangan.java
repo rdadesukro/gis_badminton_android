@@ -35,7 +35,7 @@ public class menu_lapangan extends AppCompatActivity implements lapangan_view, a
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_lapangan);
         lapangan = new lapangan(this,menu_lapangan.this);
-        lapangan.get_lapangan();
+        lapangan.get_lapangan("user");
         initView();
 
     }

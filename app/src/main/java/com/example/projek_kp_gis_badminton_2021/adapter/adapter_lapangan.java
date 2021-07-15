@@ -3,6 +3,7 @@ package com.example.projek_kp_gis_badminton_2021.adapter;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.CountDownTimer;
@@ -23,12 +24,15 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.projek_kp_gis_badminton_2021.R;
+import com.example.projek_kp_gis_badminton_2021.menu.menu_jenis_lapangan;
 import com.example.projek_kp_gis_badminton_2021.model.lapangan.IsiItem_lapangan;
+import com.github.squti.guru.Guru;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import maes.tech.intentanim.CustomIntent;
 
 
 public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.HolderData> {
@@ -87,7 +91,8 @@ public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.Hold
             holder.ratingBar.setRating(Float.parseFloat(dm.getRaiting()));
         }
 
-        if (dm.getStatus_all()==1){
+        if (dm.getStatus()==1){
+            holder.txt_status.setBackgroundResource(R.drawable.bg_status_ready);
             holder.txt_status.setText("Ready");
         }else {
             holder.txt_status.setBackgroundResource(R.drawable.bg_status_penuh);
@@ -166,13 +171,10 @@ public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.Hold
                 public void onClick(View v) {
 //                    onImageClickListener.onImageClick(String.valueOf(dm.getId()), String.valueOf(dm.getDataibuId()));
 
-//                    Guru.putString("jd_event", dm.getJudulEvent());
-//                    Guru.putString("isi_event", dm.getKeteranganEvent());
-//                    Guru.putString("waktu_event", dm.getCreatedAt());
-//                    Guru.putString("foto_event", dm.getFotoEvent());
-//                    Guru.putString("jenis", "event");
-//                    ctx.startActivity(goInput);
-//                    CustomIntent.customType(ctx, "fadein-to-fadeout");
+                    Intent goInput = new Intent(ctx, menu_jenis_lapangan.class);
+                    Guru.putString("judul_notif", String.valueOf(dm.getId()));
+                    ctx.startActivity(goInput);
+                    CustomIntent.customType(ctx, "bottom-to-up");
 
 
                 }

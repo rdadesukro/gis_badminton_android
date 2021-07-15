@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import com.example.projek_kp_gis_badminton_2021.R;
 import com.example.projek_kp_gis_badminton_2021.adapter.ViewPagerAdapter;
 import com.example.projek_kp_gis_badminton_2021.menu.fragment.menu_home;
+import com.example.projek_kp_gis_badminton_2021.menu.fragment.menu_home_pemilik;
 import com.example.projek_kp_gis_badminton_2021.menu.fragment.menu_profil;
 import com.github.squti.guru.Guru;
 import com.google.android.material.badge.BadgeDrawable;
@@ -22,8 +23,8 @@ import org.jetbrains.annotations.NotNull;
 
 import maes.tech.intentanim.CustomIntent;
 
-public class menu_utama extends AppCompatActivity  implements BottomNavigationView.OnNavigationItemSelectedListener{
-    menu_home home;
+public class menu_utama_pemilik extends AppCompatActivity  implements BottomNavigationView.OnNavigationItemSelectedListener{
+    menu_home_pemilik home;
     menu_profil profil;
     ViewPager vg;
     int value;
@@ -38,24 +39,14 @@ public class menu_utama extends AppCompatActivity  implements BottomNavigationVi
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
 
         status_login = Guru.getString("status_loign", "false");
-        loadFragment(new menu_home());
+        loadFragment(new menu_home_pemilik());
         getSupportActionBar().setTitle("Home");
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
     }
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        home = new menu_home();
-        profil = new menu_profil();
 
-
-        adapter.addFragment(home);
-        adapter.addFragment(profil);
-
-        viewPager.setAdapter(adapter);
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
@@ -63,7 +54,7 @@ public class menu_utama extends AppCompatActivity  implements BottomNavigationVi
 
         switch (item.getItemId()) {
             case R.id.home:
-                fragment = new menu_home();
+                fragment = new menu_home_pemilik();
                 getSupportActionBar().setTitle("Home");
                 break;
 

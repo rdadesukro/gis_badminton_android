@@ -7,8 +7,14 @@ public class Response_login {
 	@SerializedName("access_token")
 	private String accessToken;
 
+	@SerializedName("role")
+	private int role;
+
 	@SerializedName("expires_at")
 	private String expiresAt;
+
+	@SerializedName("nama")
+	private String nama;
 
 	@SerializedName("user_id")
 	private int userId;
@@ -30,12 +36,28 @@ public class Response_login {
 		return accessToken;
 	}
 
+	public void setRole(int role){
+		this.role = role;
+	}
+
+	public int getRole(){
+		return role;
+	}
+
 	public void setExpiresAt(String expiresAt){
 		this.expiresAt = expiresAt;
 	}
 
 	public String getExpiresAt(){
 		return expiresAt;
+	}
+
+	public void setNama(String nama){
+		this.nama = nama;
+	}
+
+	public String getNama(){
+		return nama;
 	}
 
 	public void setUserId(int userId){
@@ -75,7 +97,9 @@ public class Response_login {
 		return 
 			"Response{" + 
 			"access_token = '" + accessToken + '\'' + 
+			",role = '" + role + '\'' + 
 			",expires_at = '" + expiresAt + '\'' + 
+			",nama = '" + nama + '\'' + 
 			",user_id = '" + userId + '\'' + 
 			",kode = '" + kode + '\'' + 
 			",token_type = '" + tokenType + '\'' + 

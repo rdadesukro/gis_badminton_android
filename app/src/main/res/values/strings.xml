@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Projek_KP_GIS_Badminton_2021</string>
+    <string name="password">lupa password? Klik disini</string>
+    <string name="daftar">Belum punya akun ? Klik disini</string>
+    <string name="version_unknown">Unknown</string>
+    <string name="app_version">Version</string>
 </resources>
