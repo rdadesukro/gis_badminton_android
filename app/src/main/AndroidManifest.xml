@@ -27,7 +27,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Projek_KP_GIS_Badminton_2021"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu_tambah_lapngan"></activity>
+        <activity android:name=".menu.menu_add_foto"></activity>
+        <activity android:name=".menu.menu_detail" />
+        <activity android:name=".menu.menu_tambah_lapngan" />
         <activity android:name=".menu.menu_utama" />
         <activity android:name=".menu.menu_jenis_lapangan" />
         <activity android:name=".menu.menu_utama_pemilik" />
@@ -35,6 +37,9 @@
         <activity android:name=".menu.menu_riset_password" />
         <activity
             android:name=".menu.menu_register"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity
+            android:name=".menu.menu_tambah_jenis"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity android:name=".menu.menu_lapangan" />
         <activity

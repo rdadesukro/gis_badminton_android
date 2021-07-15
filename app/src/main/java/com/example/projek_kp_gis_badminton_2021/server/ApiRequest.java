@@ -2,6 +2,7 @@ package com.example.projek_kp_gis_badminton_2021.server;
 
 
 import com.example.projek_kp_gis_badminton_2021.model.action.Response_action;
+import com.example.projek_kp_gis_badminton_2021.model.jenis.Response_jenis;
 import com.example.projek_kp_gis_badminton_2021.model.lapangan.Response_lapangan;
 import com.example.projek_kp_gis_badminton_2021.model.login.Response_login;
 import com.example.projek_kp_gis_badminton_2021.model.user.Response_user;
@@ -54,6 +55,31 @@ public interface ApiRequest {
             @Part("status") RequestBody status,
             @Part MultipartBody.Part foto);
 
+
+
+    @Multipart
+    @POST("add_jenis")
+    Call<Response_login> add_jenis(
+            @Part("nama") RequestBody nama,
+            @Part("informasi") RequestBody informasi,
+            @Part("harga") RequestBody harga,
+            @Part("lapangan_id") RequestBody lapangan_id,
+            @Part("status") RequestBody status,
+            @Part MultipartBody.Part foto);
+
+
+    @Multipart
+    @POST("edit_jenis")
+    Call<Response_login> edit_jenis(
+            @Part("nama") RequestBody nama,
+            @Part("informasi") RequestBody informasi,
+            @Part("harga") RequestBody harga,
+            @Part("lapangan_id") RequestBody lapangan_id,
+            @Part("id") RequestBody id,
+            @Part("status") RequestBody status,
+            @Part MultipartBody.Part foto);
+
+
     @Multipart
     @POST("edit_lapangan")
     Call<Response_login> edit_lapangan(
@@ -85,6 +111,11 @@ public interface ApiRequest {
 
     @POST("get_data_lapangan")
     Call<Response_lapangan> get_lapangan();
+
+
+    @FormUrlEncoded
+    @POST("get_data_jenis")
+    Call<Response_jenis> get_data_jenis(@Field("id") String id);
 
     @POST("get_data_lapangan_pemilik")
     Call<Response_lapangan> get_data_lapangan_pemilik();

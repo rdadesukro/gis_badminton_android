@@ -15,7 +15,6 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -24,7 +23,9 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.projek_kp_gis_badminton_2021.R;
+import com.example.projek_kp_gis_badminton_2021.menu.menu_detail;
 import com.example.projek_kp_gis_badminton_2021.menu.menu_jenis_lapangan;
+import com.example.projek_kp_gis_badminton_2021.model.jenis.IsiItem_jenis;
 import com.example.projek_kp_gis_badminton_2021.model.lapangan.IsiItem_lapangan;
 import com.github.squti.guru.Guru;
 
@@ -35,17 +36,17 @@ import butterknife.ButterKnife;
 import maes.tech.intentanim.CustomIntent;
 
 
-public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.HolderData> {
+public class adapter_jenis extends RecyclerView.Adapter<adapter_jenis.HolderData> {
     private static CountDownTimer countDownTimer;
     String kriim;
     String lat_new,lng_new;
     String lat,lng;
     String jenis;
     private int animation_type = 0;
-    private List<IsiItem_lapangan> mList ;
+    private List<IsiItem_jenis> mList ;
     private Context ctx;
     private OnImageClickListener onImageClickListener;
-    public adapter_lapangan(Context ctx, List<IsiItem_lapangan> mList , int animation_type, OnImageClickListener onImageClickListener) {
+    public adapter_jenis(Context ctx, List<IsiItem_jenis> mList , int animation_type, OnImageClickListener onImageClickListener) {
         this.jenis = jenis;
         this.animation_type = animation_type;
         this.mList = mList;
@@ -70,7 +71,7 @@ public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.Hold
     public HolderData onCreateViewHolder(ViewGroup parent, int viewType) {
         View layout;
         HolderData holder;
-            layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_lapangan,parent, false);
+            layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_jenis,parent, false);
             holder = new HolderData(layout);
 
             return holder;
@@ -81,9 +82,10 @@ public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.Hold
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(final HolderData holder, int position) {
-        final IsiItem_lapangan dm = mList.get(position);
+        final IsiItem_jenis dm = mList.get(position);
         holder.txt_nama.setText(dm.getNama());
-        holder.txt_alamat.setText(dm.getAlamat());
+        holder.txt_alamat.setText(dm.getHarga()+" /JAM");
+        holder.txt_komentar.setText(dm.getJumlahKomen()+" Komentar");
         if (dm.getRaiting()==null){
             holder.ratingBar.setRating(0);
 
@@ -99,7 +101,7 @@ public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.Hold
             holder.txt_status.setText("Penuh");
         }
         Glide.with(ctx)
-                .load("http://192.168.43.48/gis_badminton/public/foto_lapangan/"+dm.getFoto())
+                .load("http://192.168.43.48/gis_badminton/public/foto_jenis/"+dm.getFoto())
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
@@ -141,6 +143,9 @@ public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.Hold
         @BindView(R.id.txt_status)
         TextView txt_status;
 
+        @BindView(R.id.txt_komentar)
+        TextView txt_komentar;
+
         @BindView(R.id.img_foto)
         ImageView img_foto;
 
@@ -150,7 +155,7 @@ public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.Hold
 
 
 
-        IsiItem_lapangan dm;
+        IsiItem_jenis dm;
 
 
         public HolderData(View v) {
@@ -161,7 +166,7 @@ public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.Hold
                 public boolean onLongClick(View v) {
                     onImageClickListener.onImageClick(dm.getId(),
                                                      dm.getNama(),
-                                                  dm.getAlamat(),dm.getPhone(),dm.getFoto(),dm.getLat(),dm.getLng(),dm.getStatus());
+                                                  dm.getFoto(), String.valueOf(dm.getHarga()),dm.getFoto(),2313,1312,dm.getStatus());
                     return false;
                 }
             });
@@ -171,8 +176,8 @@ public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.Hold
                 public void onClick(View v) {
 //                    onImageClickListener.onImageClick(String.valueOf(dm.getId()), String.valueOf(dm.getDataibuId()));
 
-                    Intent goInput = new Intent(ctx, menu_jenis_lapangan.class);
-                    Guru.putString("id_lapangan", String.valueOf(dm.getId()));
+                    Intent goInput = new Intent(ctx, menu_detail.class);
+                    Guru.putString("judul_notif", String.valueOf(dm.getId()));
                     ctx.startActivity(goInput);
                     CustomIntent.customType(ctx, "bottom-to-up");
 
