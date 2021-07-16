@@ -41,7 +41,7 @@ public class lapangan {
         ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
         Log.i("isi_server", "isi_server: "+Retroserver_server_AUTH.getClient().baseUrl());
         Call<Response_lapangan> call;
-        if (role.equals("user")){
+        if (role.equals("1")){
             call = api.get_lapangan();
         }else {
             call = api.get_data_lapangan_pemilik();

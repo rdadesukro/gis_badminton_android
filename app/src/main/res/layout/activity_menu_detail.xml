@@ -68,6 +68,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <RatingBar
+                        android:id="@+id/ratingBar2"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:numStars="5"
+                        android:rating="3.5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_status" />
+
                     <View
                         android:id="@+id/view5"
                         android:layout_width="match_parent"
@@ -80,16 +94,6 @@
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txt" />
-
-                    <ImageView
-                        android:id="@+id/btn_pgl"
-                        android:layout_width="35dp"
-                        android:layout_height="50dp"
-                        android:layout_marginEnd="16dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/txt_no"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/txt_no"
-                        app:srcCompat="@drawable/ic_baseline_image_24" />
 
                     <TextView
                         android:id="@+id/txt_nama"
@@ -105,7 +109,7 @@
                         app:layout_constraintTop_toTopOf="@+id/cardView" />
 
                     <TextView
-                        android:id="@+id/txt_no"
+                        android:id="@+id/txt_alamat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="No Hp : 081272168388"
@@ -135,7 +139,7 @@
                             android:layout_height="match_parent">
 
                             <ImageView
-                                android:id="@+id/img_foto_pelapor"
+                                android:id="@+id/img_foto"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
@@ -189,6 +193,31 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txt" />
 
+                    <com.smarteist.autoimageslider.SliderView
+                        android:id="@+id/bener"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view4"
+                        app:sliderAnimationDuration="600"
+                        app:sliderAutoCycleDirection="back_and_forth"
+                        app:sliderAutoCycleEnabled="true"
+                        app:sliderIndicatorAnimationDuration="600"
+                        app:sliderIndicatorGravity="bottom|center"
+                        app:sliderIndicatorMargin="15dp"
+                        app:sliderIndicatorOrientation="horizontal"
+                        app:sliderIndicatorPadding="3dp"
+                        app:sliderIndicatorRadius="2dp"
+                        app:sliderIndicatorSelectedColor="#5A5A5A"
+                        app:sliderIndicatorUnselectedColor="#FFF"
+                        app:sliderScrollTimeInSec="1"
+                        app:sliderStartAutoCycle="true"
+                        tools:ignore="MissingConstraints">
+
+                    </com.smarteist.autoimageslider.SliderView>
+
                     <TextView
                         android:id="@+id/txt"
                         android:layout_width="wrap_content"
@@ -205,17 +234,18 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/img_foto"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_marginTop="8dp"
-                        android:scaleType="centerCrop"
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/floatingActionButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:clickable="true"
+                        android:src="@drawable/ic_baseline_add_24"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/view4"
-                        app:srcCompat="@drawable/ic_baseline_image_24" />
+                        tools:visibility="visible" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -228,6 +258,28 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/btn_telpon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Hubungin pemilik lapangan"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/btn_caht"
+                        app:layout_constraintTop_toBottomOf="@+id/btn_caht" />
+
+                    <TextView
+                        android:id="@+id/btn_caht"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Chat via whatshap"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@+id/view9"
+                        app:layout_constraintTop_toBottomOf="@+id/view9" />
 
                     <View
                         android:id="@+id/view9"
@@ -243,27 +295,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/txt_tgl" />
 
                     <TextView
-                        android:id="@+id/textView14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kode : "
-                        android:textSize="12dp"
-                        app:layout_constraintEnd_toStartOf="@+id/txt_kode2"
-                        app:layout_constraintTop_toBottomOf="@+id/txt_judul" />
-
-                    <TextView
-                        android:id="@+id/txt_kode2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="24dp"
-                        android:text="20041115"
-                        android:textColor="#F44336"
-                        android:textSize="12dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txt_judul" />
-
-                    <TextView
-                        android:id="@+id/txt_judul2"
+                        android:id="@+id/txt_informasi2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -289,7 +321,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txt_judul2" />
+                        app:layout_constraintTop_toBottomOf="@+id/txt_informasi2" />
 
                     <TextView
                         android:id="@+id/txt_tgl"
@@ -298,11 +330,11 @@
                         android:text="Wed, 20 Jan 19, 05:08 PM"
                         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                         android:textColor="@color/grey_40"
-                        app:layout_constraintStart_toStartOf="@+id/txt_judul"
-                        app:layout_constraintTop_toBottomOf="@+id/txt_judul" />
+                        app:layout_constraintStart_toStartOf="@+id/txt_informasi"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_informasi" />
 
                     <TextView
-                        android:id="@+id/txt_judul"
+                        android:id="@+id/txt_informasi"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
@@ -312,7 +344,6 @@
                         android:text="Judu Laporan Tebaru Aku Hancur  Judu Laporan Tebaru Aku Hancur  Cinta Kalo Sudah Cinta Kalo Sudah"
                         android:textColor="@color/grey_60"
                         android:textSize="16dp"
-                        android:textAllCaps="true"
                         app:fontFamily="sans-serif-medium"
                         app:layout_constraintBottom_toTopOf="@+id/con_berita"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -366,7 +397,8 @@
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_marginEnd="16dp"
-                        android:background="@drawable/ic_baseline_arrow_forward_ios_24"
+                        android:background="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="@+id/textView4"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -375,7 +407,6 @@
                         android:id="@+id/con_berita"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent">
@@ -384,7 +415,7 @@
                             android:id="@+id/txt_komen"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/baloo_chettan"
+                            android:fontFamily="@font/opensansbold"
                             android:text="Tidak Ada Komen"
                             android:textSize="16dp"
                             android:visibility="gone"
@@ -402,14 +433,14 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            tools:listitem="@layout/model_koment" />
+                            tools:listitem="@layout/model_komen" />
 
                         <ProgressBar
                             android:id="@+id/progressBar"
                             style="?android:attr/progressBarStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/progres_color"
+                            android:background="@drawable/ic_baseline_add_24"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -437,7 +468,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/cardView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cardView3"
-        app:srcCompat="@drawable/ic_baseline_add_24"
+        app:srcCompat="@drawable/ic_baseline_send_24"
         app:useCompatPadding="false" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

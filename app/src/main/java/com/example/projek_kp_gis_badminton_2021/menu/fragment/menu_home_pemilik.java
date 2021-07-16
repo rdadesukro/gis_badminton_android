@@ -45,6 +45,7 @@ public class menu_home_pemilik extends Fragment implements lapangan_view, adapte
     private FloatingActionButton btnPanggil;
     private adapter_lapangan adapter_lapangan;
     AlertDialog.Builder acion;
+    String role;
     com.example.projek_kp_gis_badminton_2021.presenter.lapangan lapangan;
     public menu_home_pemilik() {
         // Required empty public constructor
@@ -64,7 +65,17 @@ public class menu_home_pemilik extends Fragment implements lapangan_view, adapte
         ButterKnife.bind(this, view);
         initView(view);
         lapangan = new lapangan(this, getActivity());
-        lapangan.get_lapangan("pemilik");
+        role = Guru.getString("role", "false");
+        lapangan.get_lapangan(role);
+
+
+
+
+        if (role.equals("1")){
+            btnPanggil.setVisibility(View.GONE);
+        }else {
+            btnPanggil.setVisibility(View.VISIBLE);
+        }
 
 
         btnPanggil.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +86,14 @@ public class menu_home_pemilik extends Fragment implements lapangan_view, adapte
                 startActivity(intent);
             }
         });
+
+        swifeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                lapangan.get_lapangan(role);
+            }
+        });
+
         return view;
 
 
@@ -83,7 +102,7 @@ public class menu_home_pemilik extends Fragment implements lapangan_view, adapte
     @Override
     public void onResume() {
         super.onResume();
-
+        lapangan.get_lapangan(role);
 
     }
 

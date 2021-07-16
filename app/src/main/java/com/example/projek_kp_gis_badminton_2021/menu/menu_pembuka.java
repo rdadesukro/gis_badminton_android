@@ -17,6 +17,7 @@ public class menu_pembuka extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_pembuka);
         role = Guru.getString("role", "false");
+        getSupportActionBar().hide();
         star();
     }
 
@@ -26,10 +27,10 @@ public class menu_pembuka extends AppCompatActivity {
             @Override
             public void run() {
                 if (role.equals("1")){
-                    Intent intent  = new Intent(menu_pembuka.this, menu_utama_pemilik.class);
+                    Intent intent  = new Intent(menu_pembuka.this, menu_utama.class);
                     startActivity(intent);
                 }else{
-                    Intent intent  = new Intent(menu_pembuka.this, menu_utama.class);
+                    Intent intent  = new Intent(menu_pembuka.this, menu_utama_pemilik.class);
                     startActivity(intent);
                 }
 

@@ -20,6 +20,7 @@ import com.example.projek_kp_gis_badminton_2021.R;
 import com.example.projek_kp_gis_badminton_2021.adapter.adapter_jenis;
 import com.example.projek_kp_gis_badminton_2021.adapter.adapter_lapangan;
 import com.example.projek_kp_gis_badminton_2021.model.jenis.IsiItem_jenis;
+import com.example.projek_kp_gis_badminton_2021.model.jenis_detail.IsiItem_jenis_detail;
 import com.example.projek_kp_gis_badminton_2021.presenter.jenis;
 import com.example.projek_kp_gis_badminton_2021.view.jenis_view;
 import com.github.squti.guru.Guru;
@@ -39,15 +40,24 @@ public class menu_jenis_lapangan extends AppCompatActivity implements jenis_view
     com.example.projek_kp_gis_badminton_2021.presenter.jenis jenis;
     String id;
     private FloatingActionButton btnPanggil2;
+    String  role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_jenis_lapangan);
+        initView();
         jenis = new jenis(this, menu_jenis_lapangan.this);
         id = Guru.getString("id_lapangan", "");
-        jenis.get_jenis("pemilik", id);
-        initView();
+        role = Guru.getString("role", "false");
+        Log.i("role_id", "onCreate: "+role);
+        jenis.get_jenis(role, id);
+
+        if (role.equals("1")){
+            btnPanggil2.setVisibility(View.GONE);
+        }else {
+            btnPanggil2.setVisibility(View.VISIBLE);
+        }
 
 
         btnPanggil2.setOnClickListener(new View.OnClickListener() {
@@ -59,8 +69,18 @@ public class menu_jenis_lapangan extends AppCompatActivity implements jenis_view
                 startActivity(intent);
             }
         });
+        swifeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                jenis.get_jenis(role, id);
+            }
+        });
     }
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        jenis.get_jenis(role, id);
+    }
     @Override
     public void onImageClick(int id, String nama, String alamat, String phone, String foto, double lat, double lng, int status) {
         final CharSequence[] dialogitem = {"Edit", "Delete"};
@@ -113,6 +133,11 @@ public class menu_jenis_lapangan extends AppCompatActivity implements jenis_view
         } catch (Exception e) {
 
         }
+    }
+
+    @Override
+    public void jenis_detail(List<IsiItem_jenis_detail> jenis_detail) {
+
     }
 
     @Override

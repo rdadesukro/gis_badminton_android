@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 import android.icu.util.Calendar;
 import android.media.ExifInterface;
 import android.net.Uri;
@@ -26,10 +27,16 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.example.projek_kp_gis_badminton_2021.R;
 import com.example.projek_kp_gis_badminton_2021.presenter.jenis;
 import com.example.projek_kp_gis_badminton_2021.presenter.lapangan;
@@ -125,6 +132,7 @@ public class menu_tambah_jenis extends AppCompatActivity implements  Validator.V
     Bitmap bitmap;
     String nama,alamat,lat,lng,phone,status,jenis,id_lapangan,id_jenis;
     int staus_lapnagan;
+    String foto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -147,6 +155,25 @@ public class menu_tambah_jenis extends AppCompatActivity implements  Validator.V
             alamat = Guru.getString("informasi", "");
             phone = Guru.getString("harga", "");
             status = Guru.getString("status", "");
+            foto = Guru.getString("foto", "");
+
+
+            Glide.with(this)
+                    .load("http://192.168.43.48/gis_badminton/public/foto_jenis/"+foto)
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            return false;
+                        }
+                    })
+                    .error(R.drawable.ic_baseline_speaker_notes_off_24)
+                    .centerCrop()
+                    .into(img_foto);
 
             if (status.equals("1")){
                 rd_tersedia.setChecked(true);

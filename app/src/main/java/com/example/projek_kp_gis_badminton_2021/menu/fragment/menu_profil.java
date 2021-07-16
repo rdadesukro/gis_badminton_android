@@ -231,6 +231,7 @@ public class menu_profil extends Fragment implements coba_view,CameraCapture_new
                         sweetAlertDialog.dismissWithAnimation();
                         aksi countryPresenter = new aksi(null,getActivity());
                         countryPresenter.logout(progressDialog);
+                        Guru.putString("role", "1");
                         Log.i("isi_token", "onViewClicked: "+Guru.getString("token_login", "false"));
 //                        countryPresenter.hapus_token(Guru.getString("token_login", "false"));
 

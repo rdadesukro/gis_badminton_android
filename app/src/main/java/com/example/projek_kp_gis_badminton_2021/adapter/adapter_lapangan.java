@@ -7,12 +7,14 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
@@ -91,7 +93,7 @@ public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.Hold
             holder.ratingBar.setRating(Float.parseFloat(dm.getRaiting()));
         }
 
-        if (dm.getStatus()==1){
+        if (dm.getStatus()==1&&dm.getStatus_all()>0){
             holder.txt_status.setBackgroundResource(R.drawable.bg_status_ready);
             holder.txt_status.setText("Ready");
         }else {
@@ -159,10 +161,17 @@ public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.Hold
             v.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    onImageClickListener.onImageClick(dm.getId(),
-                                                     dm.getNama(),
-                                                  dm.getAlamat(),dm.getPhone(),dm.getFoto(),dm.getLat(),dm.getLng(),dm.getStatus());
-                    return false;
+
+                   String role = Guru.getString("role", "false");
+                    if (role.equals("1")){
+
+                    }else {
+                        onImageClickListener.onImageClick(dm.getId(),
+                                dm.getNama(),
+                                dm.getAlamat(),dm.getPhone(),dm.getFoto(),dm.getLat(),dm.getLng(),dm.getStatus());
+
+                    }
+                       return false;
                 }
             });
 
@@ -171,10 +180,28 @@ public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.Hold
                 public void onClick(View v) {
 //                    onImageClickListener.onImageClick(String.valueOf(dm.getId()), String.valueOf(dm.getDataibuId()));
 
-                    Intent goInput = new Intent(ctx, menu_jenis_lapangan.class);
-                    Guru.putString("id_lapangan", String.valueOf(dm.getId()));
-                    ctx.startActivity(goInput);
-                    CustomIntent.customType(ctx, "bottom-to-up");
+
+                    String role = Guru.getString("role", "false");
+                    if (role.equals("1")){
+                        if (dm.getStatus()==1&&dm.getStatus_all()>0){
+                            Intent goInput = new Intent(ctx, menu_jenis_lapangan.class);
+                            Guru.putString("id_lapangan", String.valueOf(dm.getId()));
+                            ctx.startActivity(goInput);
+                            CustomIntent.customType(ctx, "bottom-to-up");
+                        }else {
+                            Toast.makeText(ctx, "MAAF LAPANGAN PENUH", Toast.LENGTH_SHORT).show();
+                        }
+                    }else {
+
+                        Intent goInput = new Intent(ctx, menu_jenis_lapangan.class);
+                        Guru.putString("id_lapangan", String.valueOf(dm.getId()));
+                        ctx.startActivity(goInput);
+                        CustomIntent.customType(ctx, "bottom-to-up");
+
+                    }
+
+
+
 
 
                 }

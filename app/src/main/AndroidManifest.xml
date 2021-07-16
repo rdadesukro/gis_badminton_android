@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -27,11 +28,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Projek_KP_GIS_Badminton_2021"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu_add_foto"></activity>
-        <activity android:name=".menu.menu_detail" />
-        <activity android:name=".menu.menu_tambah_lapngan" />
+        <activity android:name=".menu.menu_tambah_foto"></activity>
+        <activity android:name=".menu.menu_add_foto"
+            android:label="TAMBAH FOTO"/>
+        <activity android:name=".menu.menu_detail"
+            android:label="DETAIL LAPANGAN"/>
+        <activity android:name=".menu.menu_tambah_lapngan"
+            android:label="TAMBAH LAPANGAN"/>
         <activity android:name=".menu.menu_utama" />
-        <activity android:name=".menu.menu_jenis_lapangan" />
+        <activity android:name=".menu.menu_jenis_lapangan"
+            android:label="JENIS LAPANGAN"/>
         <activity android:name=".menu.menu_utama_pemilik" />
         <activity android:name=".menu.menu_update_password" />
         <activity android:name=".menu.menu_riset_password" />
@@ -40,8 +46,10 @@
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".menu.menu_tambah_jenis"
+            android:label="TAMABAH JENIS LAPANGAN"
             android:windowSoftInputMode="stateVisible|adjustResize" />
-        <activity android:name=".menu.menu_lapangan" />
+        <activity android:name=".menu.menu_lapangan"
+            android:label="LAPANGAN"/>
         <activity
             android:name=".menu.fragment.menu_profil"
             tools:ignore="Instantiatable" />

@@ -17,6 +17,7 @@ import com.example.projek_kp_gis_badminton_2021.adapter.adapter_lapangan;
 import com.example.projek_kp_gis_badminton_2021.model.lapangan.IsiItem_lapangan;
 import com.example.projek_kp_gis_badminton_2021.presenter.lapangan;
 import com.example.projek_kp_gis_badminton_2021.view.lapangan_view;
+import com.github.squti.guru.Guru;
 
 import java.util.List;
 
@@ -28,17 +29,34 @@ public class menu_lapangan extends AppCompatActivity implements lapangan_view, a
     private RecyclerView rvAku;
     private ProgressBar progressBar;
     private adapter_lapangan adapter_lapangan;
+    String role;
     com.example.projek_kp_gis_badminton_2021.presenter.lapangan lapangan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_lapangan);
-        lapangan = new lapangan(this,menu_lapangan.this);
-        lapangan.get_lapangan("user");
+
         initView();
+        role = Guru.getString("role", "false");
+        Log.i("isi_role", "onCreate: "+role);
+        lapangan = new lapangan(this,menu_lapangan.this);
+        lapangan.get_lapangan(role);
+
+        swifeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                lapangan.get_lapangan(role);
+            }
+        });
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        lapangan.get_lapangan(role);
 
     }
+
 
     @Override
     public void onImageClick(int id, String nama, String alamat, String phone, String foto, double lat, double lng, int status) {

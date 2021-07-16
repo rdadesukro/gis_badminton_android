@@ -2,7 +2,10 @@ package com.example.projek_kp_gis_badminton_2021.server;
 
 
 import com.example.projek_kp_gis_badminton_2021.model.action.Response_action;
+import com.example.projek_kp_gis_badminton_2021.model.foto_slider.Response_slider;
 import com.example.projek_kp_gis_badminton_2021.model.jenis.Response_jenis;
+import com.example.projek_kp_gis_badminton_2021.model.jenis_detail.Response_jenis_detail;
+import com.example.projek_kp_gis_badminton_2021.model.komentar.Response_komentar;
 import com.example.projek_kp_gis_badminton_2021.model.lapangan.Response_lapangan;
 import com.example.projek_kp_gis_badminton_2021.model.login.Response_login;
 import com.example.projek_kp_gis_badminton_2021.model.user.Response_user;
@@ -17,6 +20,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Query;
 
 
 public interface ApiRequest {
@@ -101,6 +105,13 @@ public interface ApiRequest {
             @Field("password_baru") String password_baru);
 
 
+    @FormUrlEncoded
+    @POST("add_komentar")
+    Call<Response_login> add_komentar(
+            @Field("jenis_id") String jenis_id,
+            @Field("komentar") String komentar);
+
+
 
     @FormUrlEncoded
     @POST("login")
@@ -116,6 +127,22 @@ public interface ApiRequest {
     @FormUrlEncoded
     @POST("get_data_jenis")
     Call<Response_jenis> get_data_jenis(@Field("id") String id);
+
+
+    @GET("get_data_jenis_user")
+    Call<Response_jenis> get_data_jenis_user(@Query("id") String id);
+
+
+    @GET("get_data_jenis_detail")
+    Call<Response_jenis_detail> get_data_jenis_detail(@Query("id") String id);
+
+
+
+    @GET("get_foto_slider")
+    Call<Response_slider> get_slider(@Query("id") String id);
+
+    @GET("get_komentar")
+    Call<Response_komentar> get_komentar(@Query("id") String id);
 
     @POST("get_data_lapangan_pemilik")
     Call<Response_lapangan> get_data_lapangan_pemilik();

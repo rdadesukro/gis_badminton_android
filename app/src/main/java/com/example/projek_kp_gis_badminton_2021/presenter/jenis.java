@@ -7,6 +7,8 @@ import android.util.Log;
 
 import com.example.projek_kp_gis_badminton_2021.model.jenis.IsiItem_jenis;
 import com.example.projek_kp_gis_badminton_2021.model.jenis.Response_jenis;
+import com.example.projek_kp_gis_badminton_2021.model.jenis_detail.IsiItem_jenis_detail;
+import com.example.projek_kp_gis_badminton_2021.model.jenis_detail.Response_jenis_detail;
 import com.example.projek_kp_gis_badminton_2021.model.lapangan.IsiItem_lapangan;
 import com.example.projek_kp_gis_badminton_2021.model.lapangan.Response_lapangan;
 import com.example.projek_kp_gis_badminton_2021.model.login.Response_login;
@@ -44,8 +46,8 @@ public class jenis {
         ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
         Log.i("isi_server", "isi_server: "+Retroserver_server_AUTH.getClient().baseUrl());
         Call<Response_jenis> call;
-        if (role.equals("user")){
-            call = api.get_data_jenis(id);
+        if (role.equals("1")){
+            call = api.get_data_jenis_user(id);
         }else {
             call = api.get_data_jenis(id);
         }
@@ -73,6 +75,52 @@ public class jenis {
 
             @Override
             public void onFailure(Call<Response_jenis> call, Throwable t) {
+                t.printStackTrace();
+                Log.i("cek_error", "onFailure: " + t);
+                if (t instanceof IOException) {
+
+
+                } else {
+
+
+                }
+            }
+        });
+    }
+
+    public void get_jenis_detail(String role,String id) {
+        ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
+        Log.i("isi_server", "isi_server: "+Retroserver_server_AUTH.getClient().baseUrl());
+        Call<Response_jenis_detail> call;
+        if (role.equals("1")){
+            call = api.get_data_jenis_detail(id);
+        }else {
+            call = api.get_data_jenis_detail(id);
+        }
+        call.enqueue(new Callback<Response_jenis_detail>() {
+            @Override
+            public void onResponse(Call<Response_jenis_detail> call, Response<Response_jenis_detail> response) {
+
+                try {
+
+                    if (response.isSuccessful()) {
+                        Response_jenis_detail data = response.body();
+                        //Toast.makeText(ctx, ""+ response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.i("isi_data", "onResponse: "+data);
+                        if (data != null && data.getIsi() != null) {
+                            List<IsiItem_jenis_detail> result = data.getIsi();
+                            countryView.jenis_detail(result);
+                        }
+                    }
+                } catch (Exception e) {
+                    Log.e("onResponse", "There is an error" + e);
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Response_jenis_detail> call, Throwable t) {
                 t.printStackTrace();
                 Log.i("cek_error", "onFailure: " + t);
                 if (t instanceof IOException) {

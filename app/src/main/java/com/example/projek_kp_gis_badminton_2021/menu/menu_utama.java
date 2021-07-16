@@ -95,4 +95,8 @@ public class menu_utama extends AppCompatActivity  implements BottomNavigationVi
         }
         return false;
     }
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
 }

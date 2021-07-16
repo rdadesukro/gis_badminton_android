@@ -94,13 +94,15 @@
         android:paddingRight="@dimen/_8sdp"
         android:paddingBottom="@dimen/_8sdp"
         android:text="CALL"
-        app:backgroundTint="@color/grey_900"
         android:textColor="@android:color/white"
+        android:tint="@color/putih"
+        android:visibility="gone"
+        app:backgroundTint="@color/grey_900"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:tint="@color/putih"
         app:srcCompat="@drawable/ic_baseline_add_24"
-        tools:ignore="VectorDrawableCompat" />
+        tools:ignore="VectorDrawableCompat"
+        tools:visibility="visible" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

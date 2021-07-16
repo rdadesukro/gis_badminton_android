@@ -110,7 +110,7 @@ public class aksi {
                     Log.i("role_kode", "onResponse: " + role);
 
                     //role = 1 = pemilik
-                    //role = 2 = usert
+                    //role = 0 = usert
 
                     if (kode.equals("1")) {
                         finalPDialog.dismiss();

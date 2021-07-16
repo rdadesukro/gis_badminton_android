@@ -86,4 +86,8 @@ public class menu_utama_pemilik extends AppCompatActivity  implements BottomNavi
         }
         return false;
     }
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
 }
