@@ -4,16 +4,17 @@ import com.google.gson.annotations.SerializedName;
 
 public class IsiItem_lapangan {
 
-	public String getRaiting() {
+
+	public float getRaiting() {
 		return raiting;
 	}
 
-	public void setRaiting(String raiting) {
+	public void setRaiting(float raiting) {
 		this.raiting = raiting;
 	}
 
 	@SerializedName("raiting")
-	private String raiting;
+	private float raiting;
 
 	@SerializedName("nama")
 	private String nama;
@@ -45,8 +46,24 @@ public class IsiItem_lapangan {
 	@SerializedName("foto")
 	private String foto;
 
+	public double getLng() {
+		return lng;
+	}
+
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
+
+	public double getLat() {
+		return lat;
+	}
+
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+
 	@SerializedName("lng")
-	private int lng;
+	private double lng;
 
 	@SerializedName("updated_at")
 	private String updatedAt;
@@ -64,7 +81,7 @@ public class IsiItem_lapangan {
 	private int id;
 
 	@SerializedName("lat")
-	private int lat;
+	private double lat;
 
 	@SerializedName("alamat")
 	private String alamat;
@@ -89,13 +106,6 @@ public class IsiItem_lapangan {
 		return foto;
 	}
 
-	public void setLng(int lng){
-		this.lng = lng;
-	}
-
-	public int getLng(){
-		return lng;
-	}
 
 	public void setUpdatedAt(String updatedAt){
 		this.updatedAt = updatedAt;
@@ -137,13 +147,6 @@ public class IsiItem_lapangan {
 		return id;
 	}
 
-	public void setLat(int lat){
-		this.lat = lat;
-	}
-
-	public int getLat(){
-		return lat;
-	}
 
 	public void setAlamat(String alamat){
 		this.alamat = alamat;

@@ -109,11 +109,11 @@ public class menu_register extends AppCompatActivity implements Validator.Valida
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 // find which radio button is selected
                 if(checkedId == R.id.rd_user) {
-                    role=0;
+                    role=1;
 
                     Toast.makeText(menu_register.this, "sads"+role, Toast.LENGTH_SHORT).show();
                 } else if(checkedId == R.id.rd_pemilik) {
-                    role=1;
+                    role=0;
                     Toast.makeText(menu_register.this, "sdsa"+role, Toast.LENGTH_SHORT).show();
 
                 } else {

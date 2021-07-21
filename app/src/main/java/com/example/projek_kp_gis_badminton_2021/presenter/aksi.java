@@ -109,8 +109,8 @@ public class aksi {
                     String role = String.valueOf(response.body().getRole());
                     Log.i("role_kode", "onResponse: " + role);
 
-                    //role = 1 = pemilik
-                    //role = 0 = usert
+                    //role = 1 = user
+                    //role = 0 = pemilik
 
                     if (kode.equals("1")) {
                         finalPDialog.dismiss();

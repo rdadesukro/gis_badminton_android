@@ -1,16 +1,22 @@
 package com.example.projek_kp_gis_badminton_2021.presenter;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.projek_kp_gis_badminton_2021.model.foto_slider.Response_slider;
+import com.example.projek_kp_gis_badminton_2021.model.login.Response_login;
 import com.example.projek_kp_gis_badminton_2021.server.ApiRequest;
 import com.example.projek_kp_gis_badminton_2021.server.Retroserver_server_AUTH;
 import com.example.projek_kp_gis_badminton_2021.view.slider_view;
+import com.jeevandeshmukh.glidetoastlib.GlideToast;
 
 import java.io.IOException;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -88,6 +94,63 @@ public class slider {
         });
 
     }
+    public void simpan_foto(RequestBody id,RequestBody jenis_id, RequestBody nama, String jenis,
+                            MultipartBody.Part foto, ProgressDialog pDialog) {
+
+        pDialog = new ProgressDialog(ctx);
+        pDialog.setTitle("Mohon Tunggu!!!");
+        pDialog.setMessage("Simpan  Data...");
+        pDialog.setCancelable(false);
+        pDialog.setCanceledOnTouchOutside(false);
+        pDialog.show();
+        ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
+        Call<Response_login> sendbio;
+        if (jenis.equals("new")){
+            sendbio = api.add_foto(jenis_id,nama,foto);
+        }else {
+            sendbio = api.edit_foto(id,jenis_id,nama,foto);
+        }
+
+
+
+        ProgressDialog finalPDialog = pDialog;
+        sendbio.enqueue(new Callback<Response_login>() {
+            @Override
+            public void onResponse(Call<Response_login> call, Response<Response_login> response) {
+
+                try {
+                    String kode = response.body().getKode();
+                    Log.i("kode_update", "onResponse: " + kode);
+                    countryView.status(kode);
+
+                    if (kode.equals("1")) {
+                        finalPDialog.dismiss();
+                        new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.SUCCESSTOAST, GlideToast.CENTER).show();
+
+                    } else if (kode.equals("3")){
+                        finalPDialog.dismiss();
+                        new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.WARNINGTOAST, GlideToast.CENTER).show();
+                    }else {
+                        finalPDialog.dismiss();
+                        new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.WARNINGTOAST, GlideToast.CENTER).show();
+
+                    }
+                }catch (Exception e){
+                    Log.i("kode_eror", "onResponse: "+e);
+                }
+
+
+
+            }
+            @Override
+            public void onFailure(Call<Response_login> call, Throwable t) {
+
+                Log.d("RETRO", "Falure : " + "Gagal Mengirim Request");
+            }
+        });
+
+    }
+
 
 }
 

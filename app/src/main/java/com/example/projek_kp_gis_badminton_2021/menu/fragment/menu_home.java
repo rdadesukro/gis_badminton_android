@@ -11,6 +11,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.projek_kp_gis_badminton_2021.R;
 import com.example.projek_kp_gis_badminton_2021.menu.menu_lapangan;
+import com.example.projek_kp_gis_badminton_2021.menu.menu_marker;
+import com.example.projek_kp_gis_badminton_2021.menu.menu_petunjuk;
+import com.example.projek_kp_gis_badminton_2021.menu.menu_tentang_aplikasi;
 
 import butterknife.ButterKnife;
 
@@ -73,11 +76,25 @@ public class menu_home extends Fragment {
                 startActivity(materi);
             }
         });
+        cardPetunjuk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent materi = new Intent(getActivity(), menu_petunjuk.class);
+                startActivity(materi);
+            }
+        });
+        cardAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent materi = new Intent(getActivity(), menu_tentang_aplikasi.class);
+                startActivity(materi);
+            }
+        });
          cardMaps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent materi = new Intent(getActivity(), menu_tugas.class);
-//                startActivity(materi);
+                Intent materi = new Intent(getActivity(), menu_marker.class);
+                startActivity(materi);
             }
         });
 

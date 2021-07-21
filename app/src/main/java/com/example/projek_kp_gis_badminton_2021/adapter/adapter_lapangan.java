@@ -86,12 +86,12 @@ public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.Hold
         final IsiItem_lapangan dm = mList.get(position);
         holder.txt_nama.setText(dm.getNama());
         holder.txt_alamat.setText(dm.getAlamat());
-        if (dm.getRaiting()==null){
-            holder.ratingBar.setRating(0);
-
-        }else {
-            holder.ratingBar.setRating(Float.parseFloat(dm.getRaiting()));
-        }
+//        if (!dm.getRaiting()=null){
+//            holder.ratingBar.setRating(0);
+//
+//        }else {
+            holder.ratingBar.setRating(dm.getRaiting());
+       // }
 
         if (dm.getStatus()==1&&dm.getStatus_all()>0){
             holder.txt_status.setBackgroundResource(R.drawable.bg_status_ready);
@@ -186,6 +186,7 @@ public class adapter_lapangan extends RecyclerView.Adapter<adapter_lapangan.Hold
                         if (dm.getStatus()==1&&dm.getStatus_all()>0){
                             Intent goInput = new Intent(ctx, menu_jenis_lapangan.class);
                             Guru.putString("id_lapangan", String.valueOf(dm.getId()));
+                            Guru.putString("nama_lapangan", String.valueOf(dm.getNama()));
                             ctx.startActivity(goInput);
                             CustomIntent.customType(ctx, "bottom-to-up");
                         }else {

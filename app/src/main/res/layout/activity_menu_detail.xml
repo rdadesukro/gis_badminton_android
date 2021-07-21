@@ -197,6 +197,7 @@
                         android:id="@+id/bener"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:layout_marginTop="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -251,13 +252,25 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 app:cardCornerRadius="8dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Tracking"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <TextView
                         android:id="@+id/btn_telpon"
@@ -267,8 +280,8 @@
                         android:layout_marginBottom="8dp"
                         android:text="Hubungin pemilik lapangan"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/btn_caht"
+                        app:layout_constraintBottom_toTopOf="@+id/button"
+                        app:layout_constraintEnd_toEndOf="@+id/btn_caht"
                         app:layout_constraintTop_toBottomOf="@+id/btn_caht" />
 
                     <TextView
@@ -278,7 +291,7 @@
                         android:layout_marginTop="16dp"
                         android:text="Chat via whatshap"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@+id/view9"
+                        app:layout_constraintEnd_toEndOf="@+id/view9"
                         app:layout_constraintTop_toBottomOf="@+id/view9" />
 
                     <View
@@ -372,6 +385,7 @@
                         android:text="( 8 Comment )"
                         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                         android:textColor="@color/grey_40"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="@+id/textView4"
                         app:layout_constraintEnd_toStartOf="@+id/arrowBtn"
                         app:layout_constraintTop_toTopOf="@+id/textView4" />

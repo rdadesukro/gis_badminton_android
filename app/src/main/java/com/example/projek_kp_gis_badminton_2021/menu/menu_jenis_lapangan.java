@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -40,7 +41,7 @@ public class menu_jenis_lapangan extends AppCompatActivity implements jenis_view
     com.example.projek_kp_gis_badminton_2021.presenter.jenis jenis;
     String id;
     private FloatingActionButton btnPanggil2;
-    String  role;
+    String  role,nama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +50,12 @@ public class menu_jenis_lapangan extends AppCompatActivity implements jenis_view
         initView();
         jenis = new jenis(this, menu_jenis_lapangan.this);
         id = Guru.getString("id_lapangan", "");
+        nama = Guru.getString("nama_lapangan", "");
         role = Guru.getString("role", "false");
         Log.i("role_id", "onCreate: "+role);
         jenis.get_jenis(role, id);
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(nama);
         if (role.equals("1")){
             btnPanggil2.setVisibility(View.GONE);
         }else {

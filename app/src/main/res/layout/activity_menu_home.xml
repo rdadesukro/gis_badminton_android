@@ -53,7 +53,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
-                                android:text="welcome to mobile programming"
+                                android:text="welcome to badminton gis"
                                 android:textColor="@color/putih"
                                 android:textSize="@dimen/_12sdp"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +65,6 @@
                                 android:id="@+id/textView47"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Hi, Ade Sukron"
                                 android:textColor="@color/putih"
                                 app:layout_constraintStart_toStartOf="@+id/textView48"
                                 app:layout_constraintTop_toBottomOf="@+id/textView48"
@@ -141,6 +140,7 @@
                                         android:text="1.150"
                                         android:textColor="@color/yellow_800"
                                         android:textSize="@dimen/_10sdp"
+                                        android:visibility="gone"
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintStart_toStartOf="parent" />
 
@@ -157,9 +157,9 @@
 
                                     <ImageView
                                         android:id="@+id/dad"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="0dp"
-                                        android:src="@drawable/pustaka"
+                                        android:layout_width="150dp"
+                                        android:layout_height="150dp"
+                                        android:src="@drawable/question"
                                         app:layout_constraintBottom_toTopOf="@+id/dda"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
@@ -192,6 +192,7 @@
                                         android:text="1.150"
                                         android:textColor="@color/yellow_800"
                                         android:textSize="@dimen/_10sdp"
+                                        android:visibility="gone"
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintStart_toStartOf="parent" />
 
@@ -208,16 +209,15 @@
 
                                     <ImageView
                                         android:id="@+id/imageView56"
-                                        android:layout_width="0dp"
-                                        android:layout_height="0dp"
+                                        android:layout_width="150dp"
+                                        android:layout_height="150dp"
                                         android:background="@color/putih"
-                                        android:src="@drawable/materi"
+                                        android:src="@drawable/information"
                                         app:layout_constraintBottom_toTopOf="@+id/textView52"
                                         app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintHorizontal_bias="0.0"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent"
-                                        app:layout_constraintVertical_bias="0.0" />
+                                        app:layout_constraintVertical_bias="0.608" />
                                 </androidx.constraintlayout.widget.ConstraintLayout>
                             </androidx.cardview.widget.CardView>
 
@@ -246,6 +246,7 @@
                                         android:text="1.150"
                                         android:textColor="@color/yellow_800"
                                         android:textSize="@dimen/_10sdp"
+                                        android:visibility="gone"
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintStart_toStartOf="parent" />
 
@@ -262,9 +263,9 @@
 
                                     <ImageView
                                         android:id="@+id/imageView56"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="0dp"
-                                        android:src="@drawable/tugas"
+                                        android:layout_width="150dp"
+                                        android:layout_height="150dp"
+                                        android:src="@drawable/map"
                                         app:layout_constraintBottom_toTopOf="@+id/textView52"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
@@ -299,6 +300,7 @@
                                         android:text="1.150"
                                         android:textColor="@color/yellow_800"
                                         android:textSize="@dimen/_10sdp"
+                                        android:visibility="gone"
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
                                         tools:ignore="RtlCompat" />
@@ -316,10 +318,10 @@
 
                                     <ImageView
                                         android:id="@+id/imageView56"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="0dp"
+                                        android:layout_width="150dp"
+                                        android:layout_height="150dp"
                                         android:background="@color/putih"
-                                        android:src="@drawable/materi"
+                                        android:src="@drawable/badminton"
                                         app:layout_constraintBottom_toTopOf="@+id/textView52"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"

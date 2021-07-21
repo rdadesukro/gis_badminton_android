@@ -1,6 +1,7 @@
 package com.example.projek_kp_gis_badminton_2021.presenter;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
@@ -206,6 +207,54 @@ public class jenis {
             @Override
             public void onFailure(Call<Response_login> call, Throwable t) {
                 Log.e("cek_eror_login", "onFailure: "+t);
+
+                Log.d("RETRO", "Falure : " + "Gagal Mengirim Request");
+            }
+        });
+
+    }
+
+    public void edit_rating(String jenis_id, float rating,String lapangan_id, ProgressDialog pDialog) {
+
+        pDialog = new ProgressDialog(ctx);
+        pDialog.setTitle("Mohon Tunggu!!!");
+        pDialog.setMessage("Update Rating...");
+        pDialog.setCancelable(false);
+        pDialog.setCanceledOnTouchOutside(false);
+        pDialog.show();
+        ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
+        Call<Response_login> sendbio = api.add_raiting(jenis_id,rating,lapangan_id);
+
+        ProgressDialog finalPDialog = pDialog;
+        sendbio.enqueue(new Callback<Response_login>() {
+            @Override
+            public void onResponse(Call<Response_login> call, Response<Response_login> response) {
+
+                try {
+                    String kode = response.body().getKode();
+                    Log.i("kode_update", "onResponse: " + kode);
+
+                    if (kode.equals("1")) {
+                        finalPDialog.dismiss();
+                        new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.SUCCESSTOAST, GlideToast.CENTER).show();
+
+                    } else if (kode.equals("3")){
+                        finalPDialog.dismiss();
+                        new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.WARNINGTOAST, GlideToast.CENTER).show();
+                    }else {
+                        finalPDialog.dismiss();
+                        new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.WARNINGTOAST, GlideToast.CENTER).show();
+
+                    }
+                }catch (Exception e){
+                    Log.i("kode_eror", "onResponse: "+e);
+                }
+
+
+
+            }
+            @Override
+            public void onFailure(Call<Response_login> call, Throwable t) {
 
                 Log.d("RETRO", "Falure : " + "Gagal Mengirim Request");
             }

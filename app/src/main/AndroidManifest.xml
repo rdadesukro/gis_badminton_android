@@ -28,16 +28,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Projek_KP_GIS_Badminton_2021"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu_tambah_foto"></activity>
-        <activity android:name=".menu.menu_add_foto"
-            android:label="TAMBAH FOTO"/>
-        <activity android:name=".menu.menu_detail"
-            android:label="DETAIL LAPANGAN"/>
-        <activity android:name=".menu.menu_tambah_lapngan"
-            android:label="TAMBAH LAPANGAN"/>
+        <activity android:name=".menu.menu_petunjuk"
+            android:label="PETUNJUK"></activity>
+        <activity android:name=".menu.menu_tentang_aplikasi"
+            android:label="ABOUT"/>
+        <activity android:name=".menu.menu_marker"
+            android:label="MARKER"/>
+        <activity android:name=".menu.menu_tambah_foto" />
+        <activity
+            android:name=".menu.menu_add_foto"
+            android:label="TAMBAH FOTO" />
+        <activity
+            android:name=".menu.menu_detail"
+            android:label="DETAIL LAPANGAN" />
+        <activity
+            android:name=".menu.menu_tambah_lapngan"
+            android:label="TAMBAH LAPANGAN" />
         <activity android:name=".menu.menu_utama" />
-        <activity android:name=".menu.menu_jenis_lapangan"
-            android:label="JENIS LAPANGAN"/>
+        <activity
+            android:name=".menu.menu_jenis_lapangan"
+            android:label="JENIS LAPANGAN" />
         <activity android:name=".menu.menu_utama_pemilik" />
         <activity android:name=".menu.menu_update_password" />
         <activity android:name=".menu.menu_riset_password" />
@@ -48,8 +58,9 @@
             android:name=".menu.menu_tambah_jenis"
             android:label="TAMABAH JENIS LAPANGAN"
             android:windowSoftInputMode="stateVisible|adjustResize" />
-        <activity android:name=".menu.menu_lapangan"
-            android:label="LAPANGAN"/>
+        <activity
+            android:name=".menu.menu_lapangan"
+            android:label="LAPANGAN" />
         <activity
             android:name=".menu.fragment.menu_profil"
             tools:ignore="Instantiatable" />
@@ -67,6 +78,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

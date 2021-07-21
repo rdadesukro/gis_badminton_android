@@ -17,6 +17,7 @@ import java.util.List;
 public interface slider_view {
 
     void slider(List<IsiItem_slider> slider);
+    void status(String status);
 
 
 }

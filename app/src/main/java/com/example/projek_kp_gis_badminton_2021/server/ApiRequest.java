@@ -106,6 +106,30 @@ public interface ApiRequest {
 
 
     @FormUrlEncoded
+    @POST("add_raiting")
+    Call<Response_login> add_raiting(
+            @Field("jenis_id") String jenis_id,
+            @Field("raiting") float raiting,
+            @Field("lapangan_id") String lapangan_id);
+
+    @Multipart
+    @POST("add_foto")
+    Call<Response_login> add_foto(
+            @Part("jenis_id") RequestBody jenis_id,
+            @Part("nama") RequestBody nama,
+            @Part MultipartBody.Part foto);
+
+    @Multipart
+    @POST("edit_foto")
+    Call<Response_login> edit_foto(
+            @Part("id") RequestBody id,
+            @Part("jenis_id") RequestBody jenis_id,
+            @Part("nama") RequestBody nama,
+            @Part MultipartBody.Part foto);
+
+
+
+    @FormUrlEncoded
     @POST("add_komentar")
     Call<Response_login> add_komentar(
             @Field("jenis_id") String jenis_id,
@@ -122,6 +146,10 @@ public interface ApiRequest {
 
     @POST("get_data_lapangan")
     Call<Response_lapangan> get_lapangan();
+
+
+    @POST("get_foto_slider")
+    Call<Response_slider> get_foto();
 
 
     @FormUrlEncoded

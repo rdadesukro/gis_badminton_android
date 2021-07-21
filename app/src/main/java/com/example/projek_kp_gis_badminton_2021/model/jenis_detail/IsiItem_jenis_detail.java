@@ -10,16 +10,17 @@ public class IsiItem_jenis_detail {
 	@SerializedName("jumlah_komen")
 	private int jumlahKomen;
 
-	public int getRaiting() {
+
+	public float getRaiting() {
 		return raiting;
 	}
 
-	public void setRaiting(int raiting) {
+	public void setRaiting(float raiting) {
 		this.raiting = raiting;
 	}
 
 	@SerializedName("raiting")
-	private int raiting;
+	private float raiting;
 
 	@SerializedName("lapangan")
 	private Lapangan_jenis_detail lapangan;
