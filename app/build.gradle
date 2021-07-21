@@ -6,6 +6,13 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
     defaultConfig {
         applicationId "com.example.projek_kp_gis_badminton_2021"
         minSdkVersion 23

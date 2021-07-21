@@ -140,6 +140,7 @@ public class menu_marker extends AppCompatActivity implements lapangan_view,OnMa
     @Override
     public void lapangan(List<IsiItem_lapangan> lapangan) {
         try {
+            Log.i("lapangan", "lapangan: "+lapangan);
             //  progKes.setVisibility(View.VISIBLE);
             double titk;
             for (int i = 0; i < lapangan.size(); i++) {
