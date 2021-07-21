@@ -54,7 +54,7 @@ public class menu_marker extends AppCompatActivity implements lapangan_view,OnMa
         setContentView(R.layout.activity_menu_marker);
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         lapangan = new lapangan(this,menu_marker.this);
-
+        lapangan.get_lapangan("1");
     }
 
     @SuppressLint("MissingPermission")
