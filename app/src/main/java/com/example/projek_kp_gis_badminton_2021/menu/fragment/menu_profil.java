@@ -706,7 +706,7 @@ public class menu_profil extends Fragment implements coba_view,CameraCapture_new
                 txtAlamat.setText(data_user.get(i).getAlamat());
                 String server = Guru.getString("data_foto", "default value");
                 Glide.with(this)
-                        .load("http://192.168.43.48/gis_badminton/public/foto_profil/"+ data_user.get(i).getFoto())
+                        .load("http://192.168.1.71/gis_badminton/public/foto_profil/"+ data_user.get(i).getFoto())
                         .listener(new RequestListener<Drawable>() {
                             @Override
                             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {

@@ -38,6 +38,8 @@
                     android:orientation="vertical"
                     android:padding="8dp">
 
+
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/newfsdsdff"
                         android:layout_width="match_parent"
@@ -61,29 +63,33 @@
                             android:textColor="#000000"
                             android:textSize="@dimen/_12sdp" />
 
+
                     </com.google.android.material.textfield.TextInputLayout>
+
+
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/dasdasd"
+                        android:id="@+id/textInputLayout2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="8dp"
                         android:background="@color/grey_10"
+                        android:textColorHint="#000000"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/newfsdsgggdff">
 
-                        >
-
-                        <EditText
+                        <androidx.appcompat.widget.AppCompatEditText
                             android:id="@+id/edit_alamat"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_50sdp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            android:ems="10"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:gravity="top"
                             android:hint="Alamat"
-                            android:inputType="textPersonName"
-                            android:text="jsmbi"
-
+                            android:inputType="textMultiLine"
+                            android:maxLines="12"
+                            android:minLines="7"
                             android:textColor="#000000"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="24sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
                     <com.google.android.material.textfield.TextInputLayout
@@ -103,7 +109,7 @@
                             android:layout_centerVertical="true"
                             android:ems="10"
                             android:hint="Telpon"
-                            android:inputType="textPersonName"
+                            android:inputType="number"
                             android:text="54534543"
 
                             android:textColor="#000000"
@@ -130,7 +136,7 @@
                             android:layout_centerVertical="true"
                             android:ems="10"
                             android:hint="LAT"
-                            android:inputType="textPersonName"
+                            android:inputType="number"
                             android:text="amin"
 
                             android:textColor="#000000"
@@ -155,7 +161,7 @@
                             android:layout_centerVertical="true"
                             android:ems="10"
                             android:hint="LNG"
-                            android:inputType="textPersonName"
+                            android:inputType="number"
                             android:text="amin@gmail.com"
 
                             android:textColor="#000000"
@@ -209,7 +215,7 @@
                         android:id="@+id/img_foto"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        tools:srcCompat="@tools:sample/avatars" />
+                      android:background="@drawable/ic_baseline_image_24" />
 
                     <Button
                         android:id="@+id/btn_register"

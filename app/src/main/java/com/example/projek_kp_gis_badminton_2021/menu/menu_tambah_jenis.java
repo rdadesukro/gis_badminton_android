@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -143,10 +144,12 @@ public class menu_tambah_jenis extends AppCompatActivity implements  Validator.V
         id_lapangan = Guru.getString("id_lapangan", "");
 
         if (jenis.equals("new")){
-
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.setTitle("TAMBAH");
         }else {
 
-
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.setTitle("EDIT");
 
 
             id_lapangan = Guru.getString("id_lapangan", "");
@@ -159,7 +162,7 @@ public class menu_tambah_jenis extends AppCompatActivity implements  Validator.V
 
 
             Glide.with(this)
-                    .load("http://192.168.43.48/gis_badminton/public/foto_jenis/"+foto)
+                    .load("http://192.168.1.71/gis_badminton/public/foto_jenis/"+foto)
                     .listener(new RequestListener<Drawable>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
@@ -308,7 +311,7 @@ public class menu_tambah_jenis extends AppCompatActivity implements  Validator.V
                 sts,
                 jenis,
                 body);
-       // file=null;
+       file=null;
     }
 
 

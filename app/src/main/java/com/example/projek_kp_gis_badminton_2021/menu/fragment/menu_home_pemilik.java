@@ -1,5 +1,6 @@
 package com.example.projek_kp_gis_badminton_2021.menu.fragment;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -46,6 +47,8 @@ public class menu_home_pemilik extends Fragment implements lapangan_view, adapte
     private adapter_lapangan adapter_lapangan;
     AlertDialog.Builder acion;
     String role;
+    AlertDialog.Builder builder;
+    ProgressDialog progressDialog;
     com.example.projek_kp_gis_badminton_2021.presenter.lapangan lapangan;
     public menu_home_pemilik() {
         // Required empty public constructor
@@ -151,11 +154,34 @@ public class menu_home_pemilik extends Fragment implements lapangan_view, adapte
                         break;
                     case 1:
 
+                       hapus(id);
+
                         break;
                 }
             }
         }).show();
 
+    }
+    void hapus(int id){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+        alertDialogBuilder.setMessage("Anda akan menghahpus semua data!! Yakin mau hapus??");
+                alertDialogBuilder.setPositiveButton("yes",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                lapangan.hapus_lapangan(String.valueOf(id),progressDialog);
+                               
+                            }
+                        });
+
+        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                //finish();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     @Override

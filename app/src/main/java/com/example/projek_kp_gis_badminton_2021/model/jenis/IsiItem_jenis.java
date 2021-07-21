@@ -23,8 +23,16 @@ public class IsiItem_jenis {
 	@SerializedName("updated_at")
 	private String updatedAt;
 
+	public void setHarga(String harga) {
+		this.harga = harga;
+	}
+
+	public String getHarga() {
+		return harga;
+	}
+
 	@SerializedName("harga")
-	private int harga;
+	private String harga;
 
 	public String getRaiting() {
 		return raiting;
@@ -77,13 +85,7 @@ public class IsiItem_jenis {
 		return updatedAt;
 	}
 
-	public void setHarga(int harga){
-		this.harga = harga;
-	}
 
-	public int getHarga(){
-		return harga;
-	}
 
 	public void setNama(String nama){
 		this.nama = nama;

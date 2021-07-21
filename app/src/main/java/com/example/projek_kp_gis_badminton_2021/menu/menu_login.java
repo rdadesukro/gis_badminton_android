@@ -118,9 +118,9 @@ public class menu_login extends AppCompatActivity implements Validator.Validatio
                 validator.validate();
                 break;
             case R.id.btn_lupa:
-//                goInput = new Intent(this, menu_lupa_password.class);
-//                startActivity(goInput);
-//                CustomIntent.customType(menu_login.this, "fadein-to-fadeout");
+                goInput = new Intent(this, menu_kirim_email.class);
+                startActivity(goInput);
+                CustomIntent.customType(menu_login.this, "fadein-to-fadeout");
                 break;
         }
     }

@@ -244,7 +244,7 @@ public class menu_detail extends AppCompatActivity implements jenis_view, slider
 
 
                 Glide.with(this)
-                        .load("http://192.168.43.48/gis_badminton/public/foto_jenis/" + jenis_detail.get(i).getFoto())
+                        .load("http://192.168.1.71/gis_badminton/public/foto_jenis/" + jenis_detail.get(i).getFoto())
                         .listener(new RequestListener<Drawable>() {
                             @Override
                             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {

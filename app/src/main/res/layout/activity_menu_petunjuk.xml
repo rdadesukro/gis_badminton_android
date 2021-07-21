@@ -27,6 +27,8 @@
 
                 <TextView
                     android:id="@+id/textView13"
+                    android:fontFamily="@font/opensansregular"
+                    android:layout_marginTop="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1."
@@ -37,7 +39,10 @@
                     android:id="@+id/textView14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensansregular"
+                    android:layout_marginTop="8dp"
                     android:layout_weight="4"
+
                     android:text="@string/ke_1"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -52,6 +57,8 @@
                     android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensansregular"
+                    android:layout_marginTop="8dp"
                     android:text="2."
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -60,6 +67,8 @@
                     android:id="@+id/textView14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensansregular"
+                    android:layout_marginTop="8dp"
                     android:layout_weight="4"
                     android:text="@string/ke_2"
                     android:textSize="24sp"
@@ -75,6 +84,8 @@
                     android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensansregular"
+                    android:layout_marginTop="8dp"
                     android:text="3."
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -83,6 +94,8 @@
                     android:id="@+id/textView14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensansregular"
+                    android:layout_marginTop="8dp"
                     android:layout_weight="4"
                     android:text="@string/ke_3"
                     android:textSize="24sp"
@@ -98,6 +111,8 @@
                     android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensansregular"
+                    android:layout_marginTop="8dp"
                     android:text="4."
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -106,6 +121,8 @@
                     android:id="@+id/textView14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensansregular"
+                    android:layout_marginTop="8dp"
                     android:layout_weight="4"
                     android:text="@string/ke_4"
                     android:textSize="24sp"
@@ -121,6 +138,8 @@
                     android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensansregular"
+                    android:layout_marginTop="8dp"
                     android:text="5."
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -129,6 +148,8 @@
                     android:id="@+id/textView14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensansregular"
+                    android:layout_marginTop="8dp"
                     android:layout_weight="4"
                     android:text="@string/ke_5"
                     android:textSize="24sp"

@@ -326,4 +326,6 @@ CameraCapture_new extends DialogFragment {
 
 
 
+
+
 }

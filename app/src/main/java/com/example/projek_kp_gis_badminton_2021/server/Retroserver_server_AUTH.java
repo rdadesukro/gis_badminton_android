@@ -16,7 +16,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Retroserver_server_AUTH {
-    private  static  final String base_url = "http://192.168.43.48/gis_badminton/public/api/auth/";
+    private  static  final String base_url = "http://192.168.1.71/gis_badminton/public/api/auth/";
 
     private static Retrofit retrofit;
 

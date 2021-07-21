@@ -31,6 +31,24 @@ public interface ApiRequest {
     Call<Response_action> send_email(
             @Field("email") String email);
 
+    @FormUrlEncoded
+    @POST("riset_password")
+    Call<Response_action> edit_password(
+            @Field("kode") String kode,
+            @Field("email") String email,
+            @Field("password_baru") String password_baru);
+
+
+    @FormUrlEncoded
+    @POST("hapus_lapangan")
+    Call<Response_action> hapus_lapangan(
+            @Field("id") String id);
+
+    @FormUrlEncoded
+    @POST("hapus_jenis")
+    Call<Response_action> hapus_jenis(
+            @Field("id") String id);
+
 
     @Multipart
     @POST("edit_foto_profil")
@@ -152,13 +170,13 @@ public interface ApiRequest {
     Call<Response_slider> get_foto();
 
 
-    @FormUrlEncoded
-    @POST("get_data_jenis")
-    Call<Response_jenis> get_data_jenis(@Field("id") String id);
-
 
     @GET("get_data_jenis_user")
     Call<Response_jenis> get_data_jenis_user(@Query("id") String id);
+
+
+    @GET("get_data_jenis")
+    Call<Response_jenis> get_data_jenis(@Query("id") String id);
 
 
     @GET("get_data_jenis_detail")

@@ -1,5 +1,6 @@
 package com.example.projek_kp_gis_badminton_2021.menu;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,9 +26,16 @@ import com.example.projek_kp_gis_badminton_2021.model.jenis_detail.IsiItem_jenis
 import com.example.projek_kp_gis_badminton_2021.presenter.jenis;
 import com.example.projek_kp_gis_badminton_2021.view.jenis_view;
 import com.github.squti.guru.Guru;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.security.ProviderInstaller;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
+
+import javax.net.ssl.SSLContext;
 
 public class menu_jenis_lapangan extends AppCompatActivity implements jenis_view, adapter_lapangan.OnImageClickListener {
     AlertDialog.Builder acion;
@@ -42,17 +50,28 @@ public class menu_jenis_lapangan extends AppCompatActivity implements jenis_view
     String id;
     private FloatingActionButton btnPanggil2;
     String  role,nama;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_jenis_lapangan);
         initView();
+        try {
+            ProviderInstaller.installIfNeeded(this);
+            SSLContext sslContext;
+            sslContext = SSLContext.getInstance("TLSv1.2");
+            sslContext.init(null, null, null);
+            sslContext.createSSLEngine();
+        } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException
+                | NoSuchAlgorithmException | KeyManagementException e) {
+            e.printStackTrace();
+        }
         jenis = new jenis(this, menu_jenis_lapangan.this);
         id = Guru.getString("id_lapangan", "");
         nama = Guru.getString("nama_lapangan", "");
         role = Guru.getString("role", "false");
-        Log.i("role_id", "onCreate: "+role);
+        Log.i("role_id", "onCreate: "+id+" "+role);
         jenis.get_jenis(role, id);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(nama);
@@ -109,18 +128,38 @@ public class menu_jenis_lapangan extends AppCompatActivity implements jenis_view
                         startActivity(intent);
                         break;
                     case 1:
-
+                        hapus(id);
                         break;
                 }
             }
         }).show();
     }
+    void hapus(int id){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Anda akan menghahpus semua data!! Yakin mau hapus??");
+        alertDialogBuilder.setPositiveButton("yes",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        jenis.hapus_jenis(String.valueOf(id),progressDialog);
 
+                    }
+                });
+
+        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                //finish();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
     @Override
     public void jenis(List<IsiItem_jenis> jenis) {
         try {
             //  progKes.setVisibility(View.VISIBLE);
-            Log.i("isi_event", "event: " + jenis.size());
+            Log.i("isi_event", "event: " + jenis);
             adapter_jenis = new adapter_jenis(menu_jenis_lapangan.this, jenis, 1, this::onImageClick);
             rvAku.setLayoutManager(new LinearLayoutManager(menu_jenis_lapangan.this, LinearLayoutManager.VERTICAL, false));
             rvAku.setAdapter(adapter_jenis);
@@ -134,6 +173,7 @@ public class menu_jenis_lapangan extends AppCompatActivity implements jenis_view
 
             }
         } catch (Exception e) {
+            Log.i("cek_error_jenis", "jenis: "+e);
 
         }
     }

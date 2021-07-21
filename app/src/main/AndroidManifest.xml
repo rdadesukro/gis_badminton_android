@@ -28,12 +28,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Projek_KP_GIS_Badminton_2021"
         android:usesCleartextTraffic="true">
-        <activity android:name=".menu.menu_petunjuk"
-            android:label="PETUNJUK"></activity>
-        <activity android:name=".menu.menu_tentang_aplikasi"
-            android:label="ABOUT"/>
-        <activity android:name=".menu.menu_marker"
-            android:label="MARKER"/>
+        <activity android:name=".menu.menu_kirim_email"></activity>
+        <activity
+            android:name=".menu.menu_petunjuk"
+            android:label="PETUNJUK" />
+        <activity
+            android:name=".menu.menu_tentang_aplikasi"
+            android:label="ABOUT" />
+        <activity
+            android:name=".menu.menu_marker"
+            android:label="MARKER" />
         <activity android:name=".menu.menu_tambah_foto" />
         <activity
             android:name=".menu.menu_add_foto"
@@ -43,14 +47,17 @@
             android:label="DETAIL LAPANGAN" />
         <activity
             android:name=".menu.menu_tambah_lapngan"
+            android:windowSoftInputMode="stateVisible|adjustResize"
             android:label="TAMBAH LAPANGAN" />
         <activity android:name=".menu.menu_utama" />
         <activity
             android:name=".menu.menu_jenis_lapangan"
             android:label="JENIS LAPANGAN" />
         <activity android:name=".menu.menu_utama_pemilik" />
-        <activity android:name=".menu.menu_update_password" />
-        <activity android:name=".menu.menu_riset_password" />
+        <activity android:name=".menu.menu_update_password"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity android:name=".menu.menu_riset_password"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".menu.menu_register"
             android:windowSoftInputMode="stateVisible|adjustResize" />
