@@ -38,7 +38,7 @@ public class menu_lapangan extends AppCompatActivity implements lapangan_view, a
         setContentView(R.layout.activity_menu_lapangan);
 
         initView();
-        role = Guru.getString("role", "false");
+        role = Guru.getString("role", "1");
         Log.i("isi_role", "onCreate: "+role);
         lapangan = new lapangan(this,menu_lapangan.this);
         lapangan.get_lapangan(role);

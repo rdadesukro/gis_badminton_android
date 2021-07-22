@@ -70,7 +70,7 @@ public class menu_jenis_lapangan extends AppCompatActivity implements jenis_view
         jenis = new jenis(this, menu_jenis_lapangan.this);
         id = Guru.getString("id_lapangan", "");
         nama = Guru.getString("nama_lapangan", "");
-        role = Guru.getString("role", "false");
+        role = Guru.getString("role", "1");
         Log.i("role_id", "onCreate: "+id+" "+role);
         jenis.get_jenis(role, id);
         ActionBar actionBar = getSupportActionBar();

@@ -14,6 +14,7 @@ import com.example.projek_kp_gis_badminton_2021.menu.menu_lapangan;
 import com.example.projek_kp_gis_badminton_2021.menu.menu_marker;
 import com.example.projek_kp_gis_badminton_2021.menu.menu_petunjuk;
 import com.example.projek_kp_gis_badminton_2021.menu.menu_tentang_aplikasi;
+import com.example.projek_kp_gis_badminton_2021.utils.PERMISSIONS;
 
 import butterknife.ButterKnife;
 
@@ -25,6 +26,7 @@ public class menu_home extends Fragment {
     private CardView cardAbout;
     private CardView cardMaps;
     private CardView cardLapangan;
+    PERMISSIONS permissions;
 
     public menu_home() {
         // Required empty public constructor
@@ -43,6 +45,8 @@ public class menu_home extends Fragment {
         View view = inflater.inflate(R.layout.activity_menu_home, container, false);
         ButterKnife.bind(this, view);
         initView(view);
+        permissions = new PERMISSIONS(getActivity());
+        permissions.checkPermission();
 
         return view;
 

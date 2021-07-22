@@ -100,7 +100,7 @@ public class menu_detail extends AppCompatActivity implements jenis_view, slider
 
         Log.i("id_lapangan", "onCreate: " + id_lapangan);
         status_login = Guru.getString("status_loign", "false");
-        role = Guru.getString("role", "false");
+        role = Guru.getString("role", "1");
         jenis = new jenis(this, menu_detail.this);
         komentar = new komentar(this, menu_detail.this);
         slider = new slider(this, menu_detail.this);
@@ -142,7 +142,13 @@ public class menu_detail extends AppCompatActivity implements jenis_view, slider
 
 
                 } else {
-                    komentar.kirim_komentar(id_jenis, textContent.getText().toString(), progressDialog);
+                    if (textContent.getText().toString().equals("")){
+                        Toast.makeText(menu_detail.this, "Maaf Isi dahulu", Toast.LENGTH_SHORT).show();
+
+                    }else {
+                        komentar.kirim_komentar(id_jenis, textContent.getText().toString(), progressDialog);
+                    }
+
                 }
             }
         });
@@ -244,7 +250,7 @@ public class menu_detail extends AppCompatActivity implements jenis_view, slider
 
 
                 Glide.with(this)
-                        .load("http://192.168.1.71/gis_badminton/public/foto_jenis/" + jenis_detail.get(i).getFoto())
+                        .load("http://192.168.43.48/gis_badminton/public/foto_jenis/" + jenis_detail.get(i).getFoto())
                         .listener(new RequestListener<Drawable>() {
                             @Override
                             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {

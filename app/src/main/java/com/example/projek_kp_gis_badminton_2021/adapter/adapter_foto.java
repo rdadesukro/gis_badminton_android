@@ -80,7 +80,7 @@ public class adapter_foto extends RecyclerView.Adapter<adapter_foto.HolderData> 
         final IsiItem_slider dm = mList.get(position);
         holder.txt_nama.setText(dm.getNama());
         Glide.with(ctx)
-                .load("http://192.168.1.71/gis_badminton/public/foto_slider/"+dm.getFoto())
+                .load("http://192.168.43.48/gis_badminton/public/foto_slider/"+dm.getFoto())
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {

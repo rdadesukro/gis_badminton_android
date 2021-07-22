@@ -27,6 +27,7 @@ import com.example.projek_kp_gis_badminton_2021.menu.menu_tambah_lapngan;
 import com.example.projek_kp_gis_badminton_2021.menu.menu_utama_pemilik;
 import com.example.projek_kp_gis_badminton_2021.model.lapangan.IsiItem_lapangan;
 import com.example.projek_kp_gis_badminton_2021.presenter.lapangan;
+import com.example.projek_kp_gis_badminton_2021.utils.PERMISSIONS;
 import com.example.projek_kp_gis_badminton_2021.view.lapangan_view;
 import com.github.squti.guru.Guru;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -50,6 +51,7 @@ public class menu_home_pemilik extends Fragment implements lapangan_view, adapte
     AlertDialog.Builder builder;
     ProgressDialog progressDialog;
     com.example.projek_kp_gis_badminton_2021.presenter.lapangan lapangan;
+    PERMISSIONS permissions;
     public menu_home_pemilik() {
         // Required empty public constructor
     }
@@ -71,6 +73,8 @@ public class menu_home_pemilik extends Fragment implements lapangan_view, adapte
         role = Guru.getString("role", "false");
         lapangan.get_lapangan(role);
 
+        permissions = new PERMISSIONS(getActivity());
+        permissions.checkPermission();
 
 
 

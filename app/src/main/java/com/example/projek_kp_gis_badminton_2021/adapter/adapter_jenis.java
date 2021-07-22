@@ -101,7 +101,7 @@ public class adapter_jenis extends RecyclerView.Adapter<adapter_jenis.HolderData
             holder.txt_status.setText("Penuh");
         }
         Glide.with(ctx)
-                .load("http://192.168.1.71/gis_badminton/public/foto_jenis/"+dm.getFoto())
+                .load("http://192.168.43.48/gis_badminton/public/foto_jenis/"+dm.getFoto())
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {

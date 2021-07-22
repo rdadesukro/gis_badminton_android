@@ -162,7 +162,7 @@ public class menu_tambah_jenis extends AppCompatActivity implements  Validator.V
 
 
             Glide.with(this)
-                    .load("http://192.168.1.71/gis_badminton/public/foto_jenis/"+foto)
+                    .load("http://192.168.43.48/gis_badminton/public/foto_jenis/"+foto)
                     .listener(new RequestListener<Drawable>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {

@@ -58,7 +58,7 @@ public class SliderAdapterExample extends
         viewHolder.textViewDescription.setTextSize(16);
         viewHolder.textViewDescription.setTextColor(Color.WHITE);
         Glide.with(viewHolder.itemView)
-                .load("http://192.168.1.71/gis_badminton/public/foto_slider/"+sliderItem.getFoto())
+                .load("http://192.168.43.48/gis_badminton/public/foto_slider/"+sliderItem.getFoto())
                 .fitCenter()
                 .into(viewHolder.imageViewBackground);
 

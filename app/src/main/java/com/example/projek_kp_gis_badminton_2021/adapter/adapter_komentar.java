@@ -88,7 +88,7 @@ public class adapter_komentar extends RecyclerView.Adapter<adapter_komentar.Hold
         holder.txt_tgl.setText(dm.getCreatedAt());
 
         Glide.with(ctx)
-                .load("http://192.168.1.71/gis_badminton/public/foto_profil/"+dm.getUser().getFoto())
+                .load("http://192.168.43.48/gis_badminton/public/foto_profil/"+dm.getUser().getFoto())
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
