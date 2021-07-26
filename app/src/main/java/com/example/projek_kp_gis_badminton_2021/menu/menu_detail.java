@@ -138,7 +138,7 @@ public class menu_detail extends AppCompatActivity implements jenis_view, slider
             public void onClick(View v) {
                 if (status_login.equals("false")) {
 
-                    Toast.makeText(menu_detail.this, "Maaf Login Terlebih Daulu", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(menu_detail.this, "Maaf Login Terlebih Dahulu", Toast.LENGTH_SHORT).show();
 
 
                 } else {
@@ -250,7 +250,7 @@ public class menu_detail extends AppCompatActivity implements jenis_view, slider
 
 
                 Glide.with(this)
-                        .load("http://192.168.43.48/gis_badminton/public/foto_jenis/" + jenis_detail.get(i).getFoto())
+                        .load("http://192.168.1.71/gis_badminton/public/foto_jenis/" + jenis_detail.get(i).getFoto())
                         .listener(new RequestListener<Drawable>() {
                             @Override
                             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
@@ -371,7 +371,7 @@ public class menu_detail extends AppCompatActivity implements jenis_view, slider
                     public void onClick(View v) {
                         if (status_login.equals("false")) {
 
-                            Toast.makeText(menu_detail.this, "Maaf Login Terlebih Daulu", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(menu_detail.this, "Maaf Login Terlebih Dahulu", Toast.LENGTH_SHORT).show();
 
 
                         } else {

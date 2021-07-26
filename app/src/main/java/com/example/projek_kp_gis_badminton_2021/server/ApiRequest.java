@@ -45,6 +45,12 @@ public interface ApiRequest {
             @Field("id") String id);
 
     @FormUrlEncoded
+    @POST("hapus_foto")
+    Call<Response_action> hapus_foto(
+            @Field("id") String id);
+
+
+    @FormUrlEncoded
     @POST("hapus_jenis")
     Call<Response_action> hapus_jenis(
             @Field("id") String id);

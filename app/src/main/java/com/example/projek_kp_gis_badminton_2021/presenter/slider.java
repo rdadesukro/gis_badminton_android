@@ -6,6 +6,7 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.projek_kp_gis_badminton_2021.model.action.Response_action;
 import com.example.projek_kp_gis_badminton_2021.model.foto_slider.Response_slider;
 import com.example.projek_kp_gis_badminton_2021.model.login.Response_login;
 import com.example.projek_kp_gis_badminton_2021.server.ApiRequest;
@@ -144,6 +145,46 @@ public class slider {
             }
             @Override
             public void onFailure(Call<Response_login> call, Throwable t) {
+
+                Log.d("RETRO", "Falure : " + "Gagal Mengirim Request");
+            }
+        });
+
+    }
+    public  void  hapus_foto(String id, ProgressDialog pDialog ){
+        pDialog = new ProgressDialog(ctx);
+        pDialog.setTitle("Mohon Tunggu!!!");
+        pDialog.setMessage("Hapus Data");
+        pDialog.setCancelable(false);
+        pDialog.setCanceledOnTouchOutside(false);
+        pDialog.show();
+        ProgressDialog finalPDialog = pDialog;
+        ApiRequest api = Retroserver_server_AUTH.getClient().create(ApiRequest.class);
+
+        Call<Response_action> sendbio = api.hapus_foto(id);
+
+
+        sendbio.enqueue(new Callback<Response_action>() {
+            @Override
+            public void onResponse(Call<Response_action> call, Response<Response_action> response) {
+
+                String kode = response.body().getKode();
+                Log.i("kode_foto", "onResponse: " + kode);
+                countryView.status(kode);
+                if (kode.equals("1")) {
+                    finalPDialog.dismiss();
+                    new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.SUCCESSTOAST, GlideToast.CENTER).show();
+
+                } else {
+
+                    finalPDialog.dismiss();
+                    new GlideToast.makeToast((Activity) ctx, "" + response.body().getMessage(), GlideToast.LENGTHLONG, GlideToast.WARNINGTOAST, GlideToast.CENTER).show();
+                }
+
+            }
+            @Override
+            public void onFailure(Call<Response_action> call, Throwable t) {
+                Log.i("cek_error", "onFailure: "+t);
 
                 Log.d("RETRO", "Falure : " + "Gagal Mengirim Request");
             }

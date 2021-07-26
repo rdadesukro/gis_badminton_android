@@ -165,6 +165,8 @@ public class menu_add_foto extends AppCompatActivity implements CameraCapture.On
                         break;
                     case 1:
 
+                        slider.hapus_foto(String.valueOf(id),progressDialog);
+
                         break;
                 }
             }
@@ -224,7 +226,7 @@ public class menu_add_foto extends AppCompatActivity implements CameraCapture.On
         }else{
            nama_lapangan.setText(nama);
             Glide.with(this)
-                    .load("http://192.168.43.48/gis_badminton/public/foto_slider/"+foto)
+                    .load("http://192.168.1.71/gis_badminton/public/foto_slider/"+foto)
                     .listener(new RequestListener<Drawable>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {

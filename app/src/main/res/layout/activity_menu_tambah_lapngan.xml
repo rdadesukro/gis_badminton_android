@@ -58,7 +58,7 @@
                             android:ems="10"
                             android:hint="Nama Lapangan"
                             android:inputType="textPersonName"
-                            android:text="amin"
+
 
                             android:textColor="#000000"
                             android:textSize="@dimen/_12sdp" />
@@ -110,7 +110,7 @@
                             android:ems="10"
                             android:hint="Telpon"
                             android:inputType="number"
-                            android:text="54534543"
+
 
                             android:textColor="#000000"
                             android:textSize="@dimen/_12sdp" />
@@ -136,8 +136,8 @@
                             android:layout_centerVertical="true"
                             android:ems="10"
                             android:hint="LAT"
-                            android:inputType="number"
-                            android:text="amin"
+                            android:inputType="text"
+
 
                             android:textColor="#000000"
                             android:textSize="@dimen/_12sdp" />
@@ -161,8 +161,7 @@
                             android:layout_centerVertical="true"
                             android:ems="10"
                             android:hint="LNG"
-                            android:inputType="number"
-                            android:text="amin@gmail.com"
+                            android:inputType="text"
 
                             android:textColor="#000000"
                             android:textSize="@dimen/_12sdp" />
